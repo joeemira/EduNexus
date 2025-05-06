@@ -2,15 +2,20 @@ package login.application;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class DBConnection {
+    public static Connection connect() {
+        try {
+            Class.forName("org.postgresql.Driver");
 
-    public static Connection connect() throws SQLException {
-        String url = "jdbc:postgresql://localhost:5432/edunexus";  // ← your database name
-        String user = "postgres";         // ← your actual PostgreSQL username
-        String password = "password"; // ← your actual password
+            String url = "jdbc:postgresql://ep-young-bonus-a8lofcew-pooler.eastus2.azure.neon.tech:5432/edunexus?sslmode=require";
+            String user = "edunexus_owner";
+            String password = "npg_TEpwl34HvFWt";
 
-        return DriverManager.getConnection(url, user, password);
+            return DriverManager.getConnection(url, user, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
