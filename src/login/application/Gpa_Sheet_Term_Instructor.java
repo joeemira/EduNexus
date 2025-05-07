@@ -587,8 +587,10 @@ assignGradeToDatabase();
                 double gpa = getGradePoints(grade);
 
                 // Insert or update the grade
-                String sql = "INSERT INTO grades (student_id, course_id, gpa) VALUES (?, ?, ?) " +
-                             "ON CONFLICT (student_id, course_id) DO UPDATE SET gpa = EXCLUDED.gpa";
+                 String sql = "INSERT INTO grades (student_id, course_id, gpa, term) VALUES (?, ?, ?, 'Fall 2025') " +
+             "ON CONFLICT (student_id, course_id, term) DO UPDATE SET gpa = EXCLUDED.gpa";
+
+
 
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, studentId);
