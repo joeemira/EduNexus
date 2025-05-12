@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import login.application.DBConnection;
+import org.mindrot.jbcrypt.BCrypt;
 public class Register extends javax.swing.JFrame {
+
 
 
     public Register() {
@@ -272,8 +274,11 @@ private void registerUser(String username, String password) {
     try (Connection conn = DBConnection.connect();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+        // 🔐 Hash password securely before saving
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
         stmt.setString(1, username);
-        stmt.setString(2, password);  // 🔐 In production, hash passwords!
+        stmt.setString(2, hashedPassword);
 
         int rowsInserted = stmt.executeUpdate();
         if (rowsInserted > 0) {

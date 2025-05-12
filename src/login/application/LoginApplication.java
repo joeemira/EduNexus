@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class LoginApplication {
 
@@ -21,32 +22,36 @@ public class LoginApplication {
     }
 
     public static boolean authenticate(String username, String password) {
-        String sql = "SELECT id, role FROM users WHERE username = ? AND password = ?";
+    String sql = "SELECT id, password, role FROM users WHERE username = ?";
 
-        try (Connection conn = DBConnection.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = DBConnection.connect();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, username);
-            stmt.setString(2, password); // 🔐 Reminder: Use hashed passwords in production
+        stmt.setString(1, username);
 
-            ResultSet rs = stmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+        if (rs.next()) {
+            String storedHashedPassword = rs.getString("password");
+
+            // 🔐 Compare entered password with hashed password
+            if (BCrypt.checkpw(password, storedHashedPassword)) {
                 currentUserId = rs.getInt("id");
                 currentUserRole = rs.getString("role");
 
-                // 🔁 Store username and ID in Tocken for use elsewhere
                 Tocken.name = username;
                 Tocken.id = currentUserId;
 
                 return true;
-            } else {
-                return false;
             }
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage());
-            return false;
         }
+
+        return false;
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage());
+        return false;
     }
+}
+
 }
