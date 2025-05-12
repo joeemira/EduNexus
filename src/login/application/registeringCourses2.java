@@ -63,15 +63,15 @@ public class registeringCourses2 extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        AddButton = new javax.swing.JButton();
+        RemoveButton = new javax.swing.JButton();
+        DoneButton1 = new javax.swing.JButton();
+        BackB = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         Table1 = new javax.swing.JTable();
-        RemoveButton = new javax.swing.JButton();
-        BackB = new javax.swing.JButton();
-        AddButton = new javax.swing.JButton();
-        DoneButton1 = new javax.swing.JButton();
         subjects = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Physics (I)", "math1", "hi heelo", " " };
@@ -90,6 +90,45 @@ public class registeringCourses2 extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(null);
+
+        jPanel2.setBackground(new java.awt.Color(45, 88, 149));
+
+        AddButton.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        AddButton.setForeground(new java.awt.Color(45, 88, 149));
+        AddButton.setText("Add Subject");
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButtonActionPerformed(evt);
+            }
+        });
+
+        RemoveButton.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        RemoveButton.setForeground(new java.awt.Color(45, 88, 149));
+        RemoveButton.setText("Remove Subject");
+        RemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveButtonActionPerformed(evt);
+            }
+        });
+
+        DoneButton1.setFont(new java.awt.Font("Segoe Print", 0, 18)); // NOI18N
+        DoneButton1.setForeground(new java.awt.Color(45, 88, 149));
+        DoneButton1.setText("Done");
+        DoneButton1.setEnabled(false);
+        DoneButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoneButton1ActionPerformed(evt);
+            }
+        });
+
+        BackB.setFont(new java.awt.Font("Segoe Print", 0, 12)); // NOI18N
+        BackB.setForeground(new java.awt.Color(154, 37, 37));
+        BackB.setText("Back");
+        BackB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackBActionPerformed(evt);
+            }
+        });
 
         Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -120,74 +159,66 @@ public class registeringCourses2 extends javax.swing.JFrame {
             Table1.getColumnModel().getColumn(0).setPreferredWidth(250);
         }
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(10, 130, 380, 290);
-
-        RemoveButton.setBackground(new java.awt.Color(0, 102, 102));
-        RemoveButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        RemoveButton.setForeground(new java.awt.Color(255, 255, 255));
-        RemoveButton.setText("Remove Subject");
-        RemoveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RemoveButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(RemoveButton);
-        RemoveButton.setBounds(470, 220, 160, 40);
-
-        BackB.setBackground(new java.awt.Color(255, 255, 255));
-        BackB.setForeground(new java.awt.Color(154, 37, 37));
-        BackB.setText("Back");
-        BackB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackBActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BackB);
-        BackB.setBounds(660, 410, 110, 40);
-
-        AddButton.setBackground(new java.awt.Color(0, 102, 102));
-        AddButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        AddButton.setForeground(new java.awt.Color(255, 255, 255));
-        AddButton.setText("Add Subject");
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(AddButton);
-        AddButton.setBounds(470, 140, 160, 40);
-
-        DoneButton1.setBackground(new java.awt.Color(0, 102, 102));
-        DoneButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        DoneButton1.setForeground(new java.awt.Color(255, 255, 255));
-        DoneButton1.setText("Done");
-        DoneButton1.setEnabled(false);
-        DoneButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoneButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(DoneButton1);
-        DoneButton1.setBounds(470, 300, 160, 40);
-
         subjects.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        subjects.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                         Choose Subject", "Math 1", "Introduction to Computer and Programming", "English Language", "Chemistry", "Engineering Drawing & Projection", "Linear Algebra", "Physics (I)", "Economics of Engineering", "Humanities", "Italian Language", "Production Engineering", "Math 2", "Physics (II)", "Analogue Electronics (I)", "Basic Circuit Theory", "Human Rights", "Environmental Studies", "Elect. Systems and Digital Electronics", "Electromagnetic Fields and Wave Propagation", "Basic Mechanics", "Programming Techniques", "Analogue Electronics (II)", "Probability and Statistics", "Signal Theory", "Data Structures and Algorithms", "Complex Analysis", "Computer Architecture", "Discrete Mathematics", "Microprocessors and Microcontrollers", "Communication Technologies", "Electronic Measurements", "Technical Writing", "Control System Design", "Digital Communications", "Numerical Methods", "Database Systems", "Project Management", "Software Engineering", "Communication Networks", "Operating Systems", "Object oriented programming", "Antennas", "Communications Skills", "Digital Signal Processing", "Information Theory and Coding", "Elective II-1", "Elective II-2", "Elective II-3", "Elective II-4", "Elective II-5", "Elective II-6", "Elective II-7", "Graduation Project I", "Graduation Project II" }));
+        subjects.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Course", "Math 1", "Introduction to Computer and Programming", "English Language", "Chemistry", "Engineering Drawing & Projection", "Linear Algebra", "Physics (I)", "Economics of Engineering", "Humanities", "Italian Language", "Production Engineering", "Math 2", "Physics (II)", "Analogue Electronics (I)", "Basic Circuit Theory", "Human Rights", "Environmental Studies", "Elect. Systems and Digital Electronics", "Electromagnetic Fields and Wave Propagation", "Basic Mechanics", "Programming Techniques", "Analogue Electronics (II)", "Probability and Statistics", "Signal Theory", "Data Structures and Algorithms", "Complex Analysis", "Computer Architecture", "Discrete Mathematics", "Microprocessors and Microcontrollers", "Communication Technologies", "Electronic Measurements", "Technical Writing", "Control System Design", "Digital Communications", "Numerical Methods", "Database Systems", "Project Management", "Software Engineering", "Communication Networks", "Operating Systems", "Object oriented programming", "Antennas", "Communications Skills", "Digital Signal Processing", "Information Theory and Coding", "Elective II-1", "Elective II-2", "Elective II-3", "Elective II-4", "Elective II-5", "Elective II-6", "Elective II-7", "Graduation Project I", "Graduation Project II" }));
         subjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectsActionPerformed(evt);
             }
         });
-        getContentPane().add(subjects);
-        subjects.setBounds(30, 20, 350, 27);
 
-        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel1.setFont(new java.awt.Font("SimSun-ExtG", 1, 32)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Courses Registration");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(subjects, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(196, 196, 196))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BackB, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(202, 202, 202)
+                            .addComponent(DoneButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
+                .addComponent(subjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DoneButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(BackB)
+                .addGap(41, 41, 41))
+        );
+
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 410, 500);
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jPanel6);
-        jPanel6.setBounds(410, 0, 390, 500);
+        jPanel2.setBounds(0, 0, 800, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -303,12 +334,12 @@ private void loadSubjectsFromDatabase() {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> subjects;
